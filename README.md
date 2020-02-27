@@ -1,0 +1,3 @@
+# LinkApi Challenge
+
+Resolution repository.

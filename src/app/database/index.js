@@ -7,7 +7,7 @@ class Database {
     }
 
     init() {
-        this.mongoConnection = mongoose.connect(process.env.ENV == 'development' ? process.env.DB_TEST : process.env.DB_DSN, {
+        this.mongoConnection = mongoose.connect(process.env.DB_DSN, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false,

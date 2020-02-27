@@ -12,6 +12,7 @@ describe('VehicleController', () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
+        console.log(process.env.DB_TEST);
         db = await connection.db(process.env.DBNAME_TEST);
     });
 
@@ -20,7 +21,7 @@ describe('VehicleController', () => {
         await db.close();
     });
 
-    const vehicleData = {
+    const mockVehicle = {
         vehicle: "Ecosport",
         brand: "Ford",
         year: 2015,
@@ -28,9 +29,15 @@ describe('VehicleController', () => {
     };
 
     test('expect store on VehicleController to create a vehicle', () => {
-        return request(app).post('/vehicles').send(vehicleData).then((res) => {
+        return request(app).post('/vehicles').send(mockVehicle).then((res) => {
             expect(res.status).toBe(201);
             expect(res.body.vehicle).toBe("Ecosport");
+        });
+    });
+
+    test('expect vehicles to be fetched', () => {
+        return request(app).get('/vehicles').then((res) => {
+            expect(res.status).toBe(200);
         });
     });
 });

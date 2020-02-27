@@ -7,7 +7,7 @@ class Database {
     }
 
     init() {
-        this.mongoConnection = mongoose.connect(process.env.DB_DSN, {
+        this.mongoConnection = mongoose.connect(process.env.DB_DEV, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false,

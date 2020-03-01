@@ -42,6 +42,16 @@ class VehicleController {
             res.status(200).json({ success: true });
         }); 
     }
+
+    async search(req, res) {
+        Vehicle.find( { $or: [
+            { vehicle: req.query['q'] },
+            { brand: req.query['q'] },
+            { description: { $regex: req.query['q'] } }
+        ]}, (err, results) => {
+            res.status(200).json(results);
+        });
+    }
 }
 
 module.exports = new VehicleController();

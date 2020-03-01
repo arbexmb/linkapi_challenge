@@ -1,4 +1,6 @@
 const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 require('./app/database/index');
 
 class AppController {
@@ -11,6 +13,8 @@ class AppController {
 
     middlewares() {
         this.express.use(express.json());
+        this.express.use(cors());
+        this.express.use(bodyParser.json());
     }
 
     routes() {

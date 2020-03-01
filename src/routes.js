@@ -10,6 +10,8 @@ routes.get('/vehicles', VehicleController.index);
 
 routes.post('/vehicles', VehicleController.store);
 
+routes.get('/vehicles/search', VehicleController.search);
+
 routes.get('/vehicles/:id', VehicleController.show);
 
 routes.patch('/vehicles/:id', VehicleController.update);

@@ -25,6 +25,8 @@ That's it!
 
 The above commands will build the application backend on a development environment, then they will prepare the database to be used, the front-end framework to consume the API, and finally they will run the application on port 8080.
 
+**OBS:** The application containers will use the following ports (3000: Express.js, 8080: Vue.js and 27017: mongoDB), so don't forget to clear them all in your local OS, in order to properly build the app.
+
 ## The application
 
 With the application running, it is possible to run it at `http://127.0.0.1:8080`.

@@ -13,12 +13,12 @@ class VehicleController {
 
     async store(req, res) {
         const { vehicle, brand, year, description } = req.body;
-        const response = await Vehicle.create(req.body, (err) => {
+        const response = await Vehicle.create(req.body, (err, response) => {
           if(err) {
-            res.send({error: err.message});
-          } else {
-            res.status(201).json(response);
+            return res.send({error: err.message});
           }
+          
+          res.status(201).json(response);
         });
     }
 

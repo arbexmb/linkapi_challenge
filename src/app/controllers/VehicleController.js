@@ -8,7 +8,7 @@ class VehicleController {
             }
 
             res.status(200).json(results);
-        });
+        }).sort('-createdAt');
     }
 
     async store(req, res) {
@@ -45,9 +45,9 @@ class VehicleController {
 
     async search(req, res) {
         Vehicle.find( { $or: [
-            { vehicle: req.query['q'] },
-            { brand: req.query['q'] },
-            { description: { $regex: req.query['q'] } }
+            { vehicle: { $regex: new RegExp(req.query['q'], "i") } },
+            { brand: { $regex: new RegExp(req.query['q'], "i") } },
+            { description: { $regex: new RegExp(req.query['q'], "i") } }
         ]}, (err, results) => {
             res.status(200).json(results);
         });

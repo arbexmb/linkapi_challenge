@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  db:
+    image: 'mongo'
+    container_name: 'mongodb_container'
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./db:/data/db
+  backend:
+    container_name: 'backend_container'
+    build: '.'
+    volumes:
+      - ./server:/data
+    environment:
+      NODE_ENV: development
+    depends_on:
+      - db
+    ports:
+      - '3000:3000'
+    command: "yarn start"
+  frontend:
+    container_name: 'frontend_container'
+    build: './client'
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./client:/data
+    ports:
+      - "8080:8080"
+    command: "yarn serve"
+    depends_on:
+      - backend

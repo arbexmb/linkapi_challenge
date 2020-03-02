@@ -6,9 +6,9 @@ This repository contains an application design for the requested project in the 
 
 The application was developed using Node.js and Express as the back-end programming language and back-end framework, respectively, MongoDB as the database, and Vue.js as the front-end framework.
 
-In its infrastructure, Docker containers were mounted, to make the building process easy.
+In its infrastructure, Docker containers were mounted, to make the building process easier.
 
-**OBS:** Unfortunately, I was not able to cover everything that was asked on the challenge. However, I hope what I have done was enough to show my skills.
+**OBS:** Unfortunately, I was not able to cover everything that was asked on the challenge, because of the short time I had to develop it. However, I have created an API on the backend and a frontend application to consume the API - I hope this is enough to show my skills as a full-stack developer.
 
 ## Setup
 
@@ -37,4 +37,4 @@ As mentioned above, each request of the application consumes the API created on 
 
 ## Conclusion
 
-Despite not making everything that was suggested on the test, because of the short time I had to delevop it, I hope what I did is enough to show my skills as a full-stack developer.
+As requested, I have developed an application with backend and frontend functionalities, using JavaScript/Node.js to create the API, MongoDB, and a frontend framework. Despite not making everything that was requested, I think that what was made is enough to demonstrate my skills.

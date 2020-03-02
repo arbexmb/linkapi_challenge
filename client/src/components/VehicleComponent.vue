@@ -43,9 +43,9 @@
         </div>
       </form>
     </div>
+    <p class="error" v-if="error">{{ error }}</p>
     <hr>
     <h3 class="mt-4 mb-3">All Vehicles</h3>
-    <p class="error" v-if="error">{{ error }}</p>
     <form @submit="searchVehicle" class="col-sm-6 offset-sm-3 mb-3">
       <div class="form-inline">
         <input
@@ -85,6 +85,7 @@
 <script>
 
 import axios from 'axios';
+import { required } from 'vuelidate/lib/validators';
 const url = 'http://127.0.0.1:3000/vehicles';
 
 export default {
@@ -105,6 +106,14 @@ export default {
     }
   },
 
+  validations: {
+    object: {
+      vehicle: {
+        required
+      }
+    }
+  },
+
   methods: {
     getVehicles() {
       axios.get(url).then(
@@ -122,7 +131,13 @@ export default {
         year: this.object.year,
         description: this.object.description
       }).then(
-        this.vehicles.unshift(this.object)
+        response => {
+          if(response.status === 201) {
+            this.vehicles.unshift(response.data);
+          } else {
+            this.error = response.data.error;
+          }
+        }
       ).catch(
         error => console.log(error)
       );
@@ -132,7 +147,11 @@ export default {
     deleteVehicle(id, index, e) {
       e.preventDefault();
       axios.delete(`${url}/${id}`).then(
-        this.vehicles.splice(index, 1)
+        response => {
+          if(response.status === 200) {
+            this.vehicles.splice(index, 1)
+          }
+        }
       ).catch(
         error => console.log(error)
       );

@@ -25,8 +25,6 @@ That's it!
 
 The above commands will build the application backend on a development environment, then they will prepare the database to be used, the front-end framework to consume the API, and finally they will run the application on port 8080.
 
-The above commands will build the application on a development environment, then they will prepare the database to be used, and finally they will run the application on port 3000.
-
 ## The application
 
 With the application running, it is possible to run it at `http://127.0.0.1:8080`.
